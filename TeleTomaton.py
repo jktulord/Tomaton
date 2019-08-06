@@ -1,9 +1,9 @@
 import telebot
 from db import set_state, get_state
 import os
-from flask import Flask,request
+from flask import Flask, request
 
-API_TOKEN = os.getenv('TG_API_TOKEN=<api_token>')
+API_TOKEN = os.getenv('TG_API_TOKEN')
 bot = telebot.TeleBot(API_TOKEN)
 server = Flask(__name__)
 
@@ -70,4 +70,10 @@ def send_re(message):
 
 # ----------------------------------------------------------------------------
 
-bot.polling()
+@server.route('/'+API_TOKEN, methods=['POST'])
+def get_message():
+    json_update = request.stream.read().decode('utf-8')
+    update = telebot.types.Update.de_json(json_update)
+
+    bot.process_new_updates([update])
+    return '', 200
