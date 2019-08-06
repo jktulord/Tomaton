@@ -25,6 +25,9 @@ def echo_message(message):
         bot.send_message(chat_id=message.chat.id, text=f'Of course we already know your name, {message.chat.first_name}')
         bot.send_message(chat_id=message.chat.id, text=f'Second question: what color is sky ')
         set_state(message.chat.id, 1)
+
+        ##DSDSDFFSDDSF
+
     # bot.reply_to(message, str(len(message.text.split())))
         #bot.send_message(chat_id=message.chat.id, text=f'FALSE, /restart to continue')
 
