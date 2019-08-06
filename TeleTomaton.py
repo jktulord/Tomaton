@@ -1,12 +1,11 @@
 import telebot
 from db import set_state, get_state
 import os
-import flask
-
-
+from flask import Flask,request
 
 API_TOKEN = os.getenv('TG_API_TOKEN=<api_token>')
 bot = telebot.TeleBot(API_TOKEN)
+server = Flask(__name__)
 
 
 # -------------------------------Команды------------------------------------
